@@ -1,0 +1,87 @@
+# Conky Rss feed Config File
+
+background no
+font Santana::size=10
+use_xft yes
+xftalpha 0.9
+update_interval 1.0
+total_run_times 0
+own_window yes
+#own_window_class Conkyrss
+own_window_argb_visual yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 220 5
+maximum_width 500
+draw_shades no
+draw_outline no
+draw_borders no
+default_shade_color black
+default_outline_color green
+alignment top_left
+gap_x 30
+gap_y 5
+no_buffers yes
+uppercase no
+override_utf8_locale no
+uppercase no # set to yes if you want all text to be in uppercase
+
+default_color grey
+color1 ff9000
+#7677b5
+
+###################################################################
+#                              FEEDS
+###################################################################
+TEXT
+${color1}RSS FEED ${hr 3}${color}
+
+${color1}POLITICS ${hr 1}${color}
+${rss https://content.api.nytimes.com/svc/news/v3/all/recent.rss 10 feed_title}
+-${rss https://content.api.nytimes.com/svc/news/v3/all/recent.rss 10 item_title 1}
+-${rss https://content.api.nytimes.com/svc/news/v3/all/recent.rss 10 item_title 2}
+-${rss https://content.api.nytimes.com/svc/news/v3/all/recent.rss 10 item_title 3}
+
+${rss http://feeds.reuters.com/Reuters/PoliticsNews 10 feed_title}
+-${rss http://feeds.reuters.com/Reuters/PoliticsNews 10 item_title 1}
+-${rss http://feeds.reuters.com/Reuters/PoliticsNews 10 item_title 2}
+-${rss http://feeds.reuters.com/Reuters/PoliticsNews 10 item_title 3}
+
+${rss https://www.counterpunch.org/feed/ 10 feed_title}
+-${rss https://www.counterpunch.org/feed/ 10 item_title 1}
+-${rss https://www.counterpunch.org/feed/ 10 item_title 2}
+-${rss https://www.counterpunch.org/feed/ 10 item_title 3}
+
+${rss https://feeds.feedburner.com/guidofawkes 10 feed_title}
+-${rss https://feeds.feedburner.com/guidofawkes 10 item_title 1}
+-${rss https://feeds.feedburner.com/guidofawkes 10 item_title 2}
+-${rss https://feeds.feedburner.com/guidofawkes 10 item_title 3}
+
+${color1}TECHNOLOGY ${hr 1}${color}
+${rss feeds.feedburner.com/TechCrunch 10 feed_title}
+-${rss feeds.feedburner.com/TechCrunch 10 item_title 1}
+-${rss feeds.feedburner.com/TechCrunch 10 item_title 2}
+-${rss feeds.feedburner.com/TechCrunch 10 item_title 3}
+
+${rss http://feeds2.feedburner.com/thenextweb 10 feed_title}
+-${rss http://feeds2.feedburner.com/thenextweb 10 item_title 1}
+-${rss http://feeds2.feedburner.com/thenextweb 10 item_title 2}
+-${rss http://feeds2.feedburner.com/thenextweb 10 item_title 3}
+
+WIRED ${rss https://www.wired.com/feed 10 feed_title}
+-${rss https://www.wired.com/feed 10 item_title 1}
+-${rss https://www.wired.com/feed 10 item_title 2}
+-${rss https://www.wired.com/feed 10 item_title 3}
+
+${color1}PHYSICS ${hr 1}${color}
+${rss http://www.math.columbia.edu/~woit/wordpress/?feed=rss2 10 feed_title}
+-${rss http://www.math.columbia.edu/~woit/wordpress/?feed=rss2 10 item_title 1}
+-${rss http://www.math.columbia.edu/~woit/wordpress/?feed=rss2 10 item_title 2}
+-${rss http://www.math.columbia.edu/~woit/wordpress/?feed=rss2 10 item_title 3}
+
+APS ${rss http://feeds.aps.org/rss/recent/physics.xml 10 feed_title}
+-${rss http://feeds.aps.org/rss/recent/physics.xml 10 item_title 1}
+-${rss http://feeds.aps.org/rss/recent/physics.xml 10 item_title 2}
+-${rss http://feeds.aps.org/rss/recent/physics.xml 10 item_title 3}
