@@ -22,11 +22,18 @@ set nocompatible              " be iMproved, required
  " Install L9 and avoid a Naming conflict if you've already installed a
  " different version somewhere else.
  Plugin 'ascenator/L9', {'name': 'newL9'}
+ " Start Screen:
+ Plugin 'mhinz/vim-startify'
  " Python Editing:
  Plugin 'tmhedberg/SimpylFold'
  Plugin 'vim-scripts/indentpython.vim'
+ " Javascript Syntax:
+ Plugin 'petrbroz/vim-glsl'
+ Plugin 'pangloss/vim-javascript'
  " Autocomplete:
  Plugin 'w0rp/ale'
+ " Codi Interpreter:
+ Plugin 'metakirby5/codi.vim'
  " Vim Environment:
  Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
  Plugin 'SirVer/ultisnips'
@@ -39,9 +46,6 @@ set nocompatible              " be iMproved, required
  Plugin 'ap/vim-css-color'
  " File Manager: 
  Plugin 'scrooloose/nerdtree'
- " Javascript Syntax:
- Plugin 'petrbroz/vim-glsl'
- Plugin 'pangloss/vim-javascript'
  " GOYO Distraction Free Writing:
  Plugin 'junegunn/goyo.vim'
  " Text Highlighting:
@@ -75,8 +79,6 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry
 
-"autocmd vimenter * NERDTree
-
 set splitbelow
 set splitright
 
@@ -87,12 +89,18 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
+" Remap esc to jk for exiting insert
+inoremap jk <esc> 
+
 let g:SimpylFold_docstring_preview=1
 
-" Open NERDtree if no files selected
+" Startup if no files selected:
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | wincmd p | endif
 
+" NERDtree:
 " Open NERDtree CRTL + n
 map <C-n> :NERDTreeToggle<CR>
 
@@ -118,15 +126,32 @@ set wildmenu
 syntax enable
 colorscheme deus
 
+" Highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
 " line numbers
 set number
 set relativenumber
+set numberwidth=5
+" Wrap Text in line gutter
+set cpoptions+=n
+
 " 90 Char col highlight
 set colorcolumn=90
 
-" More memory for vim 
+" Highlight Current Line
+set cursorline
+
+" More memory for vim
 set hidden
-set history=100
+set history=200
+
+" Vim likes to redraw the screen a lot. This prevents that.
+set lazyredraw
+
+
+autocmd VimEnter * highlight clear SignColumn
 
 " Goyo Config:
 function! s:goyo_enter()
